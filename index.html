@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <title>My first Vue app</title>
+            <script src="https://unpkg.com/vue@next">
+            </script>
+        </head>
+        <body>
+            <div id="app" >
+                {{message}}
+                <br>
+                <button v-on:click="afficheAlert">affiche</button>
+                <button v-on:click="switchShowText">Lorem ipsum</button>
+                <p v-show="showText" > Lorem ipsum</p>
+
+              <br>
+                <button v-on:click="displayPragraph(1)">afficher 1 </button>
+                <p v-if="pToDisplay == 1" id='1'>Paragraphe 1 </p>
+                <br>
+                <button v-on:click="displayPragraph(2)">afficher 2</button>
+                <p v-if="pToDisplay ==2" id='2'>Paragraphe 2</p>
+                <br>
+                <button v-on:click="displayPragraph(3)">afficher 3</button>
+                <p v-if="pToDisplay == 3" id='3'>paragraphe 3</p>
+
+                <br>
+                <div v-for="message in messages" :key="message.text" v-bind:style="message.style">
+                    {{ message.text }}
+                </div>
+
+                <br>
+
+                
+
+            </div>
+            
+            
+            
+                
+             
+                
+            
+            </body>
+            <script>
+            const App = {
+                data() {
+                return {
+                    showText : true,
+                    message: "hello",
+                    pToDisplay : 1,
+                    messages: [
+                        {
+                            id:1,
+                            text: "item 1",
+                            style : "color:blue"
+                        },
+                        {
+                            id : 3,
+                            text : "item 3",
+                            style : "color:red"
+                        },
+                        {
+                            id:2,
+                            text : "item 2",
+                            style :"color:yellow"
+                        }
+                    ]
+                    
+
+                }
+            },
+            methods: {
+                afficheAlert(){
+                    alert('bonjour')
+                },
+                switchShowText(){
+                    this.showText = !this.showText
+                },
+                displayPragraph(i){
+                    this.pToDisplay = i
+                }
+
+            },
+            computed: {
+
+            }
+        }
+        Vue.createApp(App).mount('#app')
+        </script>
+        </html>
